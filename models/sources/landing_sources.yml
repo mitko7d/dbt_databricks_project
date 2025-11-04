@@ -1,0 +1,53 @@
+sources:
+  - name: landing
+    database: dimitar_dbt_project_catalog
+    schema: landing
+    tables:
+      - name: orders
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null:
+                  config:
+                    severity: warn
+          - name: quantity
+            data_tests:
+              - dbt_utils.expression_is_true:
+                  arguments:
+                    expression: ">=0"
+          - name: unit_price
+            data_tests:
+              - assert_non_negative
+      - name: products
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null:
+                  config:
+                    severity: warn
+      - name: reviews
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null:
+                  config:
+                    severity: warn
+      - name: users
+        columns:
+          - name: id
+            data_tests:
+              - unique:
+                  config:
+                    severity: warn
+              - not_null:
+                  config:
+                    severity: warn
