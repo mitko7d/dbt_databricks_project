@@ -10,13 +10,6 @@ snapshots:
       - name: id
         data_tests:
           - unique:
-              where: "dbt_valid_to is null"
-              severity: warn
-      # - name: category
-      #   data_tests:
-      #     - unique:
-      #        config:
-      #         warn_if: ">1"
-      #         error_if: ">3"
-      #         store_failures: true
-
+              config:
+                where: "dbt_valid_to is null"
+                severity: warn
