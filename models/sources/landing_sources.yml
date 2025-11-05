@@ -2,8 +2,13 @@ sources:
   - name: landing
     database: "{{ env_var('DBT_CATALOG') }}"
     schema: landing
+    description: >
+          The 'landing' schema represents a collection of tables that store data related to orders, products, reviews, and users.
+
+          It is primarily used for file uploads and serves as a central repository for managing and analyzing customer and product data.
     tables:
       - name: orders
+        description: '{{doc("orders")}}'
         columns:
           - name: id
             data_tests:
@@ -22,6 +27,7 @@ sources:
             data_tests:
               - assert_non_negative
       - name: products
+        description: '{{doc("products")}}'
         columns:
           - name: id
             data_tests:
@@ -32,6 +38,7 @@ sources:
                   config:
                     severity: warn
       - name: reviews
+        description: '{{doc("reviews")}}'
         columns:
           - name: id
             data_tests:
@@ -42,6 +49,7 @@ sources:
                   config:
                     severity: warn
       - name: users
+        description: '{{doc("users")}}'
         columns:
           - name: id
             data_tests:
