@@ -1,0 +1,11 @@
+dbt_databricks_project:
+  outputs:
+    dev:
+      catalog: dimitar_dbt_project_catalog
+      host: adb-355623402624526.6.azuredatabricks.net
+      http_path: /sql/1.0/warehouses/aae37784ccc4b492
+      schema: default
+      threads: 1
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      type: databricks
+  target: dev
